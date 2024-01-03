@@ -33,23 +33,65 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 static void app_drv_pin_set(epd_drv_pins_t pin, bool state)
 {
-	// TODO: write a function to set the pin state
+	// TODO: write a function to set the pin state based on pin enumeration
+	switch(pin)
+	{
+		case EPD_DRV_BUSY_PIN:
+		// set the pin state. For example using stm32 HAL:
+		//HAL_GPIO_WritePin(port,pin,state == true ? GPIO_PIN_SET : GPIO_PIN_RESET);
+			break;
+		case EPD_DRV_DC_PIN:
+		// set the pin state
+			break;
+		case EPD_DRV_RST_PIN:
+		// set the pin state
+			break;
+		case EPD_DRV_CS_PIN:
+		// set the pin state
+			break;
+		default:
+			break;
+	}	
 }
 
 static bool app_drv_pin_get(epd_drv_pins_t pin)
 {
-	// TODO: write a function to get the pin state and return it
-	return true;
+	bool state = true;
+	// TODO: write a function to get the pin state based on pin enumeration and return it
+	switch(pin)
+	{
+		case EPD_DRV_BUSY_PIN:
+		// get the pin state. For example using stm32 HAL:
+		//  state = HAL_GPIO_ReadPin(port,pin) == GPIO_PIN_SET;
+			break;
+		case EPD_DRV_DC_PIN:
+		// get the pin state
+			break;
+		case EPD_DRV_RST_PIN:
+		// get the pin state
+			break;
+		case EPD_DRV_CS_PIN:
+		// get the pin state
+			break;
+		default:
+			break;
+	}
+
+	return state;
 }
 
 static void app_drv_spi_write(const uint8_t *data, uint32_t size)
 {
-	// TODO: write a function to write data to the SPI bus
+	// TODO: write a function to write data to the SPI bus (cs will be asserted by the driver)
+	// For example using stm32 HAL:
+	// HAL_SPI_Transmit(&hspi1, (uint8_t *)data, size, 1000);
 }
 
 static void app_drv_delay_ms(uint32_t t_ms)
 {
 	// TODO: write a function to delay t_ms milliseconds
+	// For example using stm32 HAL:
+	// HAL_Delay(t_ms);
 }
 
 // your driver functions
