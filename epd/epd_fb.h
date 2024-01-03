@@ -33,7 +33,9 @@ typedef struct epd_fb_s
 } epd_fb_t;
 
 // The library positioning follows the idea 
-// of anchoring like we can find is tcltk
+// of anchoring like we can find in TclTk.
+// Your text position is defined by the anchor so
+// it is easier to position text in the screen.
 typedef enum epd_fb_anchor_e
 {
 	EPD_FB_ANCHOR_NW = 0,

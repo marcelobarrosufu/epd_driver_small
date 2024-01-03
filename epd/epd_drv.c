@@ -29,6 +29,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "epd_cfg.h"
 #include "epd_drv.h"
 
+// some registers collect by code inspection, we do not have the datasheet
 enum epd_regs_e
 {
 	EPD_REG_PSR          = 0x00,
@@ -184,7 +185,9 @@ void epd_cog_power_off(void)
 	drv_data.drv.pin_set(EPD_DRV_CS_PIN,false);
 	// the next line is used in the original driver but
 	// it only makes sense if busy pin is an open collector pin
-	// (datasheet only says "output" so it is dangerous to drive it).
+	// as we have two outputs connected in epd schematics 
+	// (possible contention if ports are push-pull and
+	// datasheet only says "output" so it is dangerous to drive it).
 	// drv_data.drv.pin_set(EPD_DRV_BUSY_PIN,false);
 	drv_data.drv.delay_ms(150);
 	drv_data.drv.pin_set(EPD_DRV_RST_PIN,false);
